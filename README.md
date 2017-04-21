@@ -1,3 +1,3 @@
 # Kubernetes-Cryptocurrency-Mining
 
-Work in progress, yet to put up dockerfiles for images, YAML for cluster, etc
+Work in progress, yet to put up dockerfiles for images, YAML for cluster, domain of cluster dashboard
