@@ -21,11 +21,11 @@ NOTE: This can change! Plans for upgrades are in section __Plans and Upgrades__.
 Kops Vagrant Box configured to AWS to create and maintain Kubernetes cluster on AWS.
 
 ### AWS
-Zone: US East (North Virginia)
-Node Size: t2.micro
-Number of Nodes: 2
-Master Node Size: t2.micro
-Domain: To be released!
+- Zone: US East (North Virginia)
+- Node Size: t2.micro
+- Number of Nodes: 2
+- Master Node Size: t2.micro
+- Domain: To be released!
 
 # How to Deploy
 To create Kubernetes cluster on AWS with the Kops Vagrant Box:
