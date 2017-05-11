@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: zcashminer-deployment
+    namespace: zcashminer
+    spec:
+      strategy:
+        type: Recreate
+      replicas: 2
+      template:
+        metadata:
+          labels:
+            run: zcashminer-deployment
+        spec:
+          containers:
+          - name: zcashminer-container
+            image: vjeeva/zcashminer
+            env:
+            - name: USERNAME
+              value: vjvjtest
+            stdin: true
+            tty: true
+            command: ["/usr/bin/zcashd"]
