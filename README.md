@@ -5,18 +5,27 @@ The aim of this project is to have a Kubernetes cluster maintaining Cryptocurren
 
 NOTE: This readme will look raw, lots of work went into getting this working properly. Will clean up documentation as time permits, writing down raw notes for reference purposes.
 
-# Resources
+# Resources and Prerequisites
 
 ZCashMiner Docker Image: https://hub.docker.com/r/vjeeva/zcashminer/
+
+To run local Vagrant Kops Box:
+- Install Vagrant: https://www.vagrantup.com/downloads.html
+- Have your terminal in the __kops-vagrant-box__ folder and run `vagrant up`.
 
 # Architecture
 NOTE: This can change! Plans for upgrades are in section __Plans and Upgrades__.
 
-###Local
-- Kops Vagrant Box configured to AWS to create and maintain Kubernetes cluster on AWS
+### Local
 
-###AWS
-- 
+Kops Vagrant Box configured to AWS to create and maintain Kubernetes cluster on AWS.
+
+### AWS
+Zone: US East (North Virginia)
+Node Size: t2.micro
+Number of Nodes: 2
+Master Node Size: t2.micro
+Domain: To be released!
 
 # How to Deploy
 To create Kubernetes cluster on AWS with the Kops Vagrant Box:
