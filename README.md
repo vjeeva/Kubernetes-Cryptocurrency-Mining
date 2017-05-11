@@ -1,25 +1,62 @@
 # Kubernetes-Cryptocurrency-Mining
 
-Work in progress, yet to put up dockerfiles for images, YAML for cluster, domain of cluster dashboard
-
-Please also note that this project was not meant for profitability, this was to learn and develop my AWS, Docker and Kubernetes knowledge.
+# Introduction
+The aim of this project is to have a Kubernetes cluster maintaining Cryptocurrency Mining Containers automatically. This project was not meant for profitability, this was to improve my AWS, Docker and Kubernetes knowledge.
 
 NOTE: This readme will look raw, lots of work went into getting this working properly. Will clean up documentation as time permits, writing down raw notes for reference purposes.
 
-Current Progress:
-- Dockerfile is located in docker-template/Dockerfile. Image is pushed to Docker Hub.
-- New Dockerfile replacing old one mines Zcash instead of Ethereum
-- Cluster Deployed on AWS with 2 t2.micro nodes each running one container. Will beef up later and move to spot instances to get on c4.large (exciting)
+# Resources
 
-My Setup:
-- Vagrant box with Kops provisioned on it
-	- AWS Configured for my account
-- To create cluster: kops create cluster --name=MyKubernetesDomain --state=s3://MyAWSS3Bucket --zones=us-east-1c --node-count=2 --node-size=t2.micro --master-size=t2.micro --dns-zone=MyKubernetesDomain
-	- Have to confirm yes and run the update commands with the --state flag
-- To Deploy App:
-	- Get my zcashminer-deployment.yml
-	- Run kubectl create namespace zcashminer
-	- Run kubectl create -f zcashminer-deployment.yml
-- To get status:
-	- Run kubectl exec --namespace=zcashminer CONTAINERNAME zcash-cli getinfo
-	- Other useful commands found in https://hub.docker.com/r/vjeeva/zcashminer/
+ZCashMiner Docker Image: https://hub.docker.com/r/vjeeva/zcashminer/
+
+# Architecture
+NOTE: This can change! Plans for upgrades are in section __Plans and Upgrades__.
+
+###Local
+- Kops Vagrant Box configured to AWS to create and maintain Kubernetes cluster on AWS
+
+###AWS
+- 
+
+# How to Deploy
+To create Kubernetes cluster on AWS with the Kops Vagrant Box:
+
+    kops create cluster --name=MyKubernetesDomain --state=s3://MyAWSS3Bucket --zones=us-east-1c --node-count=2 --node-size=t2.micro --master-size=t2.micro --dns-zone=MyKubernetesDomain
+
+Note that once this runs, to complete you must any further commands with the --state=s3://MyAWSS3Bucket.
+
+To deploy the app, first copy the __zcashminer-deployment.yml__ to your Kops Vagrant Box. Then run:
+
+    kubectl create namespace zcashminer
+	kubectl create -f zcashminer-deployment.yml
+	
+# Useful Commands
+
+### Commands to operate on containers
+
+Status:
+
+    kubectl exec --namespace=zcashminer CONTAINERNAME zcash-cli getinfo
+
+Generate z-address for tranfer:
+
+    kubectl exec --namespace=zcashminer CONTAINERNAME zcash-cli z_getnewaddress
+	
+Generate z-addresses in wallet:
+
+    kubectl exec --namespace=zcashminer CONTAINERNAME zcash-cli z_listaddresses
+
+Get balances:
+
+    docker exec CONTAINERID zcash-cli z_getnewaddress ${ADDRESS}
+	
+# Current Accomplishments
+A list of milestones and accomplishments:
+- Dockerfile is located in docker-template/Dockerfile. Image is pushed to Docker Hub.
+- New Dockerfile replacing old one mines Zcash instead of Ethereum, Ethereum miner literally mined 0 hashes.
+- Cluster Deployed on AWS with 2 t2.micro nodes each running one container.
+
+# Plans and Upgrades
+
+- Will beef up later and move to spot instances to get on c4.large (exciting)
+- Kubernetes Dashboard on public domain (associated with my personal domain)
