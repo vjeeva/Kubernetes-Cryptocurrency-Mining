@@ -73,7 +73,11 @@ Vagrant.configure("2") do |config|
     curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
     python get-pip.py
     sudo pip install awscli
-	ssh-keygen -t rsa -N ''
+    ssh-keygen -t rsa -f /home/oracle/.ssh/id_rsa -q -P ""
+    curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+    chmod +x kubectl
+    sudo mv kubectl /usr/local/bin/kubectl
+	sudo yum -y install vim
   SHELL
   # Insert aws configure shit at end
 end
