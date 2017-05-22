@@ -67,6 +67,7 @@ A list of milestones and accomplishments:
 - New Dockerfile replacing old one mines Zcash instead of Ethereum, Ethereum miner literally mined 0 hashes.
 - Cluster Deployed on AWS with 2 t2.micro nodes each running one container.
 - Kubernetes Dashboard on public domain (associated with my personal domain)
+- Updated kops to 1.6.0 (released on May 16, updated by me on May 22)
 
 # Plans and Upgrades
 
