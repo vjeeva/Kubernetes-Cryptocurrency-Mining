@@ -3,7 +3,7 @@
 # Introduction
 The aim of this project is to have a Kubernetes cluster maintaining Cryptocurrency Mining Containers automatically. This project was not meant for profitability, this was to improve my AWS, Docker and Kubernetes knowledge.
 
-The proof-of-concept cluster is available at https://api.kubernetes.vjeeva.com/
+The proof-of-concept cluster is available at ~~https://api.kubernetes.vjeeva.com/~~ taken down for the time being - cost related.
 
 NOTE: This readme will look raw, lots of work went into getting this working properly. Will clean up documentation as time permits, writing down raw notes for reference purposes.
 
